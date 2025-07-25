@@ -1,0 +1,31 @@
+<body>
+  <!-- ヘッダーに追加 -->
+  <div class="header">
+    <ul class="right-menu-list">
+      <li><a href="#">Profile</a></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </div>
+
+  <!-- 以下、商品やバナーなどの既存部分 -->
+
+  <!-- 最後に script -->
+  <script>
+    const username = localStorage.getItem("username");
+    if (!username) {
+      window.location.href = "login.html";
+    } else {
+      const welcome = document.createElement("div");
+      welcome.innerText = `ようこそ、${username} さん`;
+      
+      welcome.style.margin = "10px";
+      document.body.prepend(welcome);
+
+    }
+
+    function logout() {
+      localStorage.removeItem("username");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
